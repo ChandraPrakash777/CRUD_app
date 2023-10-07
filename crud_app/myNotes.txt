@@ -1,0 +1,139 @@
+here i'm going to just add the morgan module so up here i'm going to say constant morgan and call the require statement and require the morgan module just down here just after this dot env i'm going to create here a command log request so as you know morgan module allows us to log a request on the console whenever we make a request so here i'm going to say app dot use and specify the morgan module and inside it i'm going to call the tiny token so let me just reload the browser back to the editor and as you can notice this will just print the type of request the path and the response millisecond
+
+
+here i'm going to create a command and say pass request to body parser so down here i'm going to say app.use and inside this parenthesis i'm going to call the bodyparcel module dot url encoded method and in the parenthesis i'm going to specify object with property extended true so this will just pause the request of the content type from url encoded so once you link the body parser module just down here i'm gonna just set the view engine
+
+
+here i'm gonna say set view engine and as you know in this project i'm using embedded javascript so here i'm gonna say app.set and in the parenthesis i'm gonna first specify the view engine parameter so we can space out the view engine to this express application and then we need to specify the type of view engine i'm using so in the double quote i'm going to specify the extension of real engine i'm using ejs view engine so i'm gonna specify here egs if you're using pug or html
+
+
+
+call the path module of node application so here i'm gonna say constant path is equal to require and require the inbuilt path module as you know i did not install this path module using npm because the path module is inbuilt in node application you just need to require it
+
+
+
+css is the prefix of this style.css as you can notice here if we open the server.
+1:09:54
+js we specify here css this is the prefix of this asset css folder
+
+
+
+so what i'm
+1:11:55
+going to do is i'm going to create about a new route and render this add user file
+
+
+
+ now once we complete the styling and convert all the html into egs let me just delete this index files so i'm gonna delete this add user.html and index.html
+
+
+
+  now once you understand how to work with the client side of this project next we're going to start working on the server side of this project so in the next lecture we're going to create a different route and connect the mongodb database to this project
+
+
+
+  i'm going to just create the server side of this application so as you can notice here in this server.js file i have these routers i'm going to separate this router from this server.
+1:16:03
+js file and create a dedicated router file so what i'm going to do is i'm going to create a new router file inside this router folder 
+
+
+
+inside this router i'm gonna say constant express is equal to and require the express module like this and just sort of that i'm not going to create here constant app and then specify the express application because this statement will create a new app so what i want instead of creating a new
+1:17:03
+app here i'm going to call a method of express so here instead of this constant app i'm going to say constant route is equal to express dot router this method allows us to create different router in a separate file so instead of app i'm gonna use this route variable like this so now you can import this file inside server.
+
+
+
+here i'm going to create a command and say load routers and here i'm going to say app.use and specify a root path and to this root path i'm gonna require this file so here i'm gonna say require in the single code specified dot forward slash server inside the server i have routes and inside this route i have router
+
+
+
+ you can notice here i just created three routes here but i didn't export at it so let me first export this route so i can use it in this server.js so down here i'm gonna say module dot exports is equal to route so now i can use this route variable in server.js
+
+
+
+ back to the router dot js file you can notice here i have these callback functions inside this router.js instead of creating these callback functions inside this parenthesis of this get method i'm going to separate this callback function so i can maintain it so inside the services i'm going to create a new service for this router
+
+
+
+ so inside the services i'm going to create a new file and name this file render. js this file is going to allow us to render different files using router
+
+
+
+as you can notice the first route is going to render the index file so inside this render.js here i'm going to say exports dot home route and i'm going to specify a callback function so here i'm going to say request and response parameter and call an arrow function like this now this export keyword is going to export this function so i can use it in other files 
+
+
+
+ now once you understand how to create a routing in this application let's take a look at how to connect the mongodb to this application and create the testful api
+
+
+
+ so once you understand how to create the mongodb connection let me show you how to create api and make crore operations now once you understand how to create the successful connection of mongodb let me just show you how to create a scheme
+1:32:27
+in mongodb
+
+
+
+so here i'm going to say constant mongoose is equal to and require the mongoose module just for that here i'm going to save our scheme is equal to and create a new instance of mongoose scheme so i'm gonna say here
+1:33:08
+new mongoose scheme scheme allows you to define a shape and content of the document so here we have mongo's scheme and in the parentheses in the curly braces i'm going to specify shape of the documen
+
+
+
+here i'm going to say constant user db is equal to mongo's dot module i'm going to call a method of mongoose model and inside this model i'm going to specify the document name
+
+
+
+  so as you know i have this scheme variable and this is the shape of my document so i'm going to pass here scheme to start that don't forget to export this model
+
+
+
+  so once the model is successfully created let me just create the controller of this website using controller i'm going to just make select update delete and create records 
+
+
+
+  so i'm going to just require this scheme inside this controller file so i can use it inside this controller just after that here i'm going to create my first api create request so here i'm going to create and command create and save new user so i'm going to just create here a function so here i'm going to say expose dot create is equal to specify request and response parameter and specify arrow function to it and 
+  
+  
+  
+  here inside this create function i'm going to save a new user so i'm going to first back to my
+  router.js and inside it i'm going to first require this controller
+
+  just after that just down here i'm gonna create my api route so here i'm gonna create a command api so here i'm going to first create this create request so in the route i'm going to say route dot post to create and add new user i'm going to use post method so i'm going to call post method in the 
+single code i'm going to specify forward slash api specify forward slash and see here users so this is the route path of post request just out of that i'm going to specify comma and say controller dot create so i'm gonna call this method when the route is match with this post method 
+
+back to the controller and inside this function i'm gonna save and create a new user now let me just do the same for update delete and find so down here i'm going to create a command and say redrive and return
+
+
+
+
+instead of this post request this time i'm going to make get request so here i'm going to say get and i'm going to make this get request on this route and i'm going to change this callback function so here i'm going to say controller dot fine so when i make a get request on this route i want to execute this find method just after that i'm gonna just say here route dot put i'm gonna just call a put method of http on this path and then i'm going to just 
+
+pass a parameter to this path so here i'm going to specify forward slash colon id so when i call this boot method i need to specify value to this id variable and now instead of this controller dot create i'm gonna say here controller dot update so i'm gonna call this update method when the route is match at the end i'm gonna say route dot delete i'm gonna call the http delete method and i'm going to pass id with this delete route so here i'm going to say for slash colon id just after that i'm going to
+
+specify callback function controller dot delete so this is how we can simply create an api for this application 
+
+
+
+
+next i'm going to show you how to create these functions and get all the information from the database now let's understand how to make crude operation using mongodb database i'm going to first create a new user using this create callback function so inside this create function i'm going to first validate the request so here i'm going to create a command
+
+and say validate request so how can i validate the request so here i'm going to say if exclamation mark request dot body if when the request make a post request with empty body i want to just send a response with a status 400 and then send a message so i'm going to say here curly braces and here i'm going to say message content cannot be empty and just return from this function so here i'm going to say return so if the user make post request with empty body i'm going to say return from this callback function so whenever the user
+
+make a post request you need to specify body of that post request as you know when you make a post request using a form all the data of the form is stored in the body of the request object and using this body we can access all the form data so down here i'm going to just create a new user so we need to create a new instance of the user td scheme so here i'm going to create a command and say new user so here i'm going to create constant user is equal to new user db and in the parentheses inside the curly
+
+
+
+so inside this controller inside this curly braces i'm going to first specify name and then here i'm going to say request dot body dot name so when the user make post request i can access this name property from the body just out of that i'm gonna say here email request dot body dot email just down here i'm going to say gender gender is going to be request dot body dot gender and just after that i'm going to say
+
+
+
+i'm going to use chaining system to call different methods so here i'm going to say dot save this method is going to save this data in the mongodb database and then here to this save method you need to pass your object so here i'm going to pass this user i want to save this user data in the mongodb database so i'm going to pass this user data here just start that specified dot and call the promise then method and inside it i'm going to specify data and inside this callback function i'm going to say response
+
+dot send and i'm going to send this data and if this promise return error i'm going to sketch it using this catch method with error so i'm going to call here a callback function and say response dot status and then i'm going to specify the error status score 500 and then send it using curly braces and inside it i'm going to say message and here i'm going to say error dot message if this variable return nothing i'm going to just specify default value some error occurred while creating a create
+
+
+
+
+
+IMPORTANT: All the Ai generated transcript starting from 1:32 (API section) is very important. 
